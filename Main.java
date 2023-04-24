@@ -1,2 +1,3 @@
-// 1.Menu
-// 
+public class Main {
+    
+}
