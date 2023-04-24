@@ -1,21 +1,20 @@
-import java.io.File;
 import java.io.FileWriter;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 
 public class CreateXmlFile {
 
-    public static void main(String[] args) {
+    public void createFile(String fileName, String node) {
 
         try {
             XMLOutputFactory factory = XMLOutputFactory.newInstance();
-            XMLStreamWriter writer = factory.createXMLStreamWriter(new FileWriter("cataleg.xml"));
+            XMLStreamWriter writer = factory.createXMLStreamWriter(new FileWriter(fileName + ".xml"));
 
             // Start document
             writer.writeStartDocument();
 
             // Start cataleg element
-            writer.writeStartElement("cataleg");
+            writer.writeStartElement(node);
 
             // End cataleg element
             writer.writeEndElement();
