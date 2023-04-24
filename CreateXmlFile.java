@@ -17,38 +17,6 @@ public class CreateXmlFile {
             // Start cataleg element
             writer.writeStartElement("cataleg");
 
-            // Start cd element
-            writer.writeStartElement("cd");
-            writer.writeAttribute("id", "1");
-
-            // titol element
-            writer.writeStartElement("titol");
-            writer.writeCharacters("Tinta Roja");
-            writer.writeEndElement();
-
-            // artista element
-            writer.writeStartElement("artista");
-            writer.writeCharacters("Andres Calamaro");
-            writer.writeEndElement();
-
-            // pais element
-            writer.writeStartElement("pais");
-            writer.writeCharacters("Argentina");
-            writer.writeEndElement();
-
-            // preu element
-            writer.writeStartElement("preu");
-            writer.writeCharacters("10.90");
-            writer.writeEndElement();
-
-            // any element
-            writer.writeStartElement("any");
-            writer.writeCharacters("2006");
-            writer.writeEndElement();
-
-            // End cd element
-            writer.writeEndElement();
-
             // End cataleg element
             writer.writeEndElement();
 
