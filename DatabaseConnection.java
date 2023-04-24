@@ -4,7 +4,7 @@ import org.xmldb.api.base.*;
 import org.xmldb.api.modules.*;
 
 public class DatabaseConnection implements IDatabaseConnection{
-
+public Database database;
 	public void connect() throws XMLDBException{
 
 		String driver = "org.exist.xmldb.DatabaseImpl"; // Driver para eXist
@@ -15,7 +15,7 @@ public class DatabaseConnection implements IDatabaseConnection{
 
 		try {
 			Class cl = Class.forName(driver); // Cargar del driver
-			Database database = (Database) cl.newInstance(); // Instancia de la BD
+			database = (Database) cl.newInstance(); // Instancia de la BD
 			DatabaseManager.registerDatabase(database); // Registro del driver
 
 		} catch (Exception e) {
