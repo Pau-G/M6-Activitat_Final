@@ -1,10 +1,26 @@
 import java.io.File;
+
+import javax.xml.crypto.Data;
+
 import org.xmldb.api.*;
 import org.xmldb.api.base.*;
 import org.xmldb.api.modules.*;
 
 public class DatabaseConnection implements IDatabaseConnection{
-public Database database;
+
+	public DatabaseConnection instance;
+
+	private DatabaseConnection() {}
+
+	public DatabaseConnection getInstance() {
+		if (instance == null) {
+			instance = new DatabaseConnection();
+		}
+		return instance;
+	}
+
+	public Database database;
+
 	public void connect() throws XMLDBException{
 
 		String driver = "org.exist.xmldb.DatabaseImpl"; // Driver para eXist
