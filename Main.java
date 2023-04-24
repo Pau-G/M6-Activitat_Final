@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) throws XMLDBException {
         
         // Connectar a base de datos
-        IDatabaseConnection connection = new DatabaseConnection();
+        IDatabaseConnection connection = DatabaseConnection.getInstance();
         connection.connect();
 
         // Menu amb les diferents opocions possibles
