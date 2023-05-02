@@ -8,11 +8,11 @@ import org.xmldb.api.modules.*;
 
 public class DatabaseConnection implements IDatabaseConnection{
 
-	public DatabaseConnection instance;
+	public static DatabaseConnection instance;
 
 	private DatabaseConnection() {}
 
-	public DatabaseConnection getInstance() {
+	public static DatabaseConnection getInstance() {
 		if (instance == null) {
 			instance = new DatabaseConnection();
 		}
