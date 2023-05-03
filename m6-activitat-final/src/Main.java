@@ -8,7 +8,7 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     static ExistHelper existHelper = new ExistHelper();
 
-    public static void crearColeccio() {
+    public static void crearColeccio() throws XMLDBException {
         System.out.println("Indica el nom de la col·lecció:");
         String collectionName;
         while ((collectionName = sc.nextLine()).isBlank() || !collectionName.matches("^[a-zA-Z0-9]")) {

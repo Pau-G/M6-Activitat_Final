@@ -1,18 +1,17 @@
-<<<<<<< HEAD
 import java.io.File;
 import java.io.PrintStream;
 import java.util.Collection;
 
 import javax.xml.crypto.Data;
 
-=======
->>>>>>> 2d96b8c284e8f3e9025acf61393482634156f84f
 import org.xmldb.api.*;
 import org.xmldb.api.base.*;
+import org.xmldb.api.modules.XPathQueryService;
 
 public class DatabaseConnection implements IDatabaseConnection {
 
 	public static DatabaseConnection instance;
+	public org.xmldb.api.base.Collection col = null;
 
 	private DatabaseConnection() {
 	}
@@ -29,7 +28,6 @@ public class DatabaseConnection implements IDatabaseConnection {
 	public void connect() throws XMLDBException {
 
 		String driver = "org.exist.xmldb.DatabaseImpl"; // Driver para eXist
-		org.xmldb.api.base.Collection col = null; // Colecci�n
 		String URI = "xmldb:exist://localhost:8080/exist/xmlrpc/db/"; // URI colecci�n
 		String usu = "admin"; // Usuario
 		String usuPwd = "2003"; // Clave

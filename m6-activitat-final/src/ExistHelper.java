@@ -2,10 +2,15 @@ import java.io.FileWriter;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 
+import org.xmldb.api.base.XMLDBException;
+import org.xmldb.api.modules.CollectionManagementService;
+
 public class ExistHelper {
 
-    public void createCollection(String collectionname) {
-
+    public void createCollection(String collectionname) throws XMLDBException {
+        DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+        CollectionManagementService managementService = (CollectionManagementService)databaseConnection.col.getService("CollectionManagementService","1.0");
+        managementService.createCollection(collectionname);
     }
 
     public void createFile(String fileName, String node) {
