@@ -1,4 +1,3 @@
-import java.io.FilenameFilter;
 import java.util.Scanner;
 
 import org.xmldb.api.base.XMLDBException;
@@ -8,28 +7,69 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     static ExistHelper existHelper = new ExistHelper();
 
+    private static String askName(String x) {
+        String name;
+        boolean isCorrect = false;
+
+        do {
+            if (!isCorrect) {
+                isCorrect = true;
+            } else {
+                System.out.println("Format incorrecte");
+            }
+
+            System.out.print("Indicar " + x);
+            name = sc.nextLine();
+        } while (name.isEmpty() || name.matches(".*\\s.*") || !name.matches("[a-zA-Z0-9]+"));
+
+        return name;
+    }
+
+    private static Float askFloat(String x ) {
+        float number;
+        boolean isCorrect = false;
+
+        do {
+            if (!isCorrect) {
+                isCorrect = true;
+            } else {
+                System.out.println("Format incorrecte");
+            }
+
+            System.out.print("Indicar " + x);
+            number = sc.nextFloat();
+        } while (number > 0);
+
+        return number;
+    }
+
+    private static int askInt(String x ) {
+        int number;
+        boolean isCorrect = false;
+
+        do {
+            if (!isCorrect) {
+                isCorrect = true;
+            } else {
+                System.out.println("Format incorrecte");
+            }
+
+            System.out.print("Indicar " + x);
+            number = sc.nextInt();
+        } while (number > 0);
+
+        return number;
+    }
+
     public static void crearColeccio() throws XMLDBException {
-        System.out.println("Indica el nom de la col·lecció:");
-        String collectionName;
-        while ((collectionName = sc.nextLine()).isBlank() || !collectionName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String collectionName = askName("nom");
 
         existHelper.createCollection(collectionName);
     }
 
     public static void crearXML() {
-        System.out.println("Indica el nom del fitxer:");
-        String fileName;
-        while ((fileName = sc.nextLine()).isBlank() || !fileName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
-
-        System.out.println("Inidica el nom del node arrel:");
-        String mainNode;
-        while ((mainNode = sc.nextLine()).isBlank() || !mainNode.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String fileName = askName("nom");
+        String mainNode = askName("node");
 
         existHelper.createFile(fileName, mainNode);
     }
