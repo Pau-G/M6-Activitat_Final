@@ -1,0 +1,13 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\Damian Nolberczyk\\Downloads\\drive-download-20230417T151505Z-001\\exist.jar",
+        "c:\\Users\\Damian Nolberczyk\\Downloads\\drive-download-20230417T151505Z-001\\exist-optional.jar",
+        "c:\\Users\\Damian Nolberczyk\\Downloads\\drive-download-20230417T151505Z-001\\log4j-1.2.15.jar",
+        "c:\\Users\\Damian Nolberczyk\\Downloads\\drive-download-20230417T151505Z-001\\ws-commons-util-1.0.2.jar",
+        "c:\\Users\\Damian Nolberczyk\\Downloads\\drive-download-20230417T151505Z-001\\xml-apis-1.3.04.jar",
+        "c:\\Users\\Damian Nolberczyk\\Downloads\\drive-download-20230417T151505Z-001\\xmldb.jar",
+        "c:\\Users\\Damian Nolberczyk\\Downloads\\drive-download-20230417T151505Z-001\\xmlrpc-client-3.1.1.jar",
+        "c:\\Users\\Damian Nolberczyk\\Downloads\\drive-download-20230417T151505Z-001\\xmlrpc-common-3.1.jar"
+    ]
+}
