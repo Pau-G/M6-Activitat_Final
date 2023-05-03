@@ -1,12 +1,14 @@
+<<<<<<< HEAD
 import java.io.File;
 import java.io.PrintStream;
 import java.util.Collection;
 
 import javax.xml.crypto.Data;
 
+=======
+>>>>>>> 2d96b8c284e8f3e9025acf61393482634156f84f
 import org.xmldb.api.*;
 import org.xmldb.api.base.*;
-import org.xmldb.api.modules.*;
 
 public class DatabaseConnection implements IDatabaseConnection {
 
