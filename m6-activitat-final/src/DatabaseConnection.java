@@ -31,7 +31,7 @@ public class DatabaseConnection implements IDatabaseConnection{
 
 		try {
 			Class cl = Class.forName(driver); // Cargar del driver
-			database = (Database) cl.newInstance(); // Instancia de la BD
+			database = (Database) cl.getDeclaredConstructor().newInstance(); // Instancia de la BD
 			DatabaseManager.registerDatabase(database); // Registro del driver
 
 		} catch (Exception e) {
@@ -39,29 +39,28 @@ public class DatabaseConnection implements IDatabaseConnection{
 			e.printStackTrace();
 		}
 
-		col = DatabaseManager.getCollection(URI, usu, usuPwd); // Connexi� amb la nostra col�lecci�
+		// col = DatabaseManager.getCollection(URI, usu, usuPwd); // Connexi� amb la nostra col�lecci�
 
-		if (col == null)
-			System.out.println(" *** LA COLECCION NO EXISTE. ***");
+		// if (col == null)
+		// 	System.out.println(" *** LA COLECCION NO EXISTE. ***");
 
-		// Exemple de consulta XQuery
+		// // Exemple de consulta XQuery
 
-		XPathQueryService servicio = (XPathQueryService) col.getService("XPathQueryService", "1.0");
+		// XPathQueryService servicio = (XPathQueryService) col.getService("XPathQueryService", "1.0");
 
-		// Ara farem i executarem la consulta xquery sobre el nostre fitxer
-		ResourceSet result = servicio.query("for $a in //title/text() return $a");
+		// // Ara farem i executarem la consulta xquery sobre el nostre fitxer
+		// ResourceSet result = servicio.query("for $a in //title/text() return $a");
 
-		// Exemple de com mostrar els resultats de la nostra consulta.
-		ResourceIterator i;
-		i = result.getIterator();
-		if (!i.hasMoreResources())
-			System.out.println(" LA CONSULTA NO DEVUELVE NADA.");
+		// // Exemple de com mostrar els resultats de la nostra consulta.
+		// ResourceIterator i;
+		// i = result.getIterator();
+		// if (!i.hasMoreResources())
+		// 	System.out.println(" LA CONSULTA NO DEVUELVE NADA.");
 
-		// while (i.hasMoreResources()) {
-		// 	Resource r = i.nextResource();
-		// 	System.out.println((String) r.getContent());
-		// }
-		col.close(); // Cerramos coleccion
-
+		// // while (i.hasMoreResources()) {
+		// // 	Resource r = i.nextResource();
+		// // 	System.out.println((String) r.getContent());
+		// // }
+		// col.close(); // Cerramos coleccion
 	}
 }
