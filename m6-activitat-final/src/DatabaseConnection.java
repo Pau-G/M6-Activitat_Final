@@ -1,10 +1,5 @@
-import java.io.File;
-
-import javax.xml.crypto.Data;
-
 import org.xmldb.api.*;
 import org.xmldb.api.base.*;
-import org.xmldb.api.modules.*;
 
 public class DatabaseConnection implements IDatabaseConnection{
 

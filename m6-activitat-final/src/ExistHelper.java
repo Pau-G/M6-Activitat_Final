@@ -2,7 +2,11 @@ import java.io.FileWriter;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 
-public class CreateXmlFile {
+public class ExistHelper {
+
+    public void createCollection(String collectionname) {
+
+    }
 
     public void createFile(String fileName, String node) {
 
@@ -31,5 +35,29 @@ public class CreateXmlFile {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void uploadXML(String collectionName, String fileName) {
+
+    }
+
+    public void insertElement(String collectionName, String fileName, String elementName, String artistName, String countryName, float price, int year) {
+
+    }
+
+    public void changeCDPrice(String collectionName, String fileName, String cdTitle, float price) {
+
+    }
+
+    public void countCDs(String collectionName, String fileName) {
+
+    }
+
+    public void deleteCD(String collectionName, String fileName, String cdTitle) {
+
+    }
+
+    public void getPreviousCDs(int year) {
+        
     }
 }
