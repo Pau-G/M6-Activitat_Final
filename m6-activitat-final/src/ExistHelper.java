@@ -1,13 +1,11 @@
 import java.io.File;
-import java.io.FileWriter;
 
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamWriter;
-
+import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.Resource;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
+import org.xmldb.api.modules.XMLResource;
 import org.xmldb.api.modules.XPathQueryService;
 
 public class ExistHelper {
@@ -38,33 +36,31 @@ public class ExistHelper {
     public void createCollection(String collectionname) throws XMLDBException {
         boolean result = databaseConnection.createCollection(collectionname);
         if (result){
-            System.out.println("colleció creada");
+            System.out.println("Col·leció creada");
         } else {
             System.out.println("Error al crear la col·lecció");
         }
     }
 
-    public void createFile(String fileName, String node) {
+    public void createFile(String collectionName, String fileName, String node) {
 
         try {
-            XMLOutputFactory factory = XMLOutputFactory.newInstance();
-            XMLStreamWriter writer = factory.createXMLStreamWriter(new FileWriter(fileName + ".xml"));
 
-            // Start document
-            writer.writeStartDocument();
+            Collection col = databaseConnection.getCollection(collectionName);
 
-            // Start cataleg element
-            writer.writeStartElement(node);
+            if (col == null) {
+                System.out.println("La col·lecció no existeix");
+                return;
+            }
 
-            // End cataleg element
-            writer.writeEndElement();
+            // Crea un nuevo documento XML
+            String xml = "<" + node + "></" + node + ">";
+            XMLResource resource = (XMLResource) col.createResource(fileName + ".xml", XMLResource.RESOURCE_TYPE);
+            resource.setContent(xml);
 
-            // End document
-            writer.writeEndDocument();
+            col.storeResource(resource);
 
-            // Flush and close writer
-            writer.flush();
-            writer.close();
+            col.close();
 
             System.out.println("XML file created successfully!");
 
@@ -84,7 +80,6 @@ public class ExistHelper {
             nouRecurs.setContent(arxiu); //Comprova que es un arxiu
             col.storeResource(nouRecurs); 
         }
-
     }
 
     public void insertElement(String collectionName, String fileName, String titol, String artistName, String countryName, float price, int year) throws XMLDBException {
