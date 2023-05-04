@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
+
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
 
@@ -90,14 +92,15 @@ public class ExistHelper {
         // Desem la coleció desitjada
         org.xmldb.api.base.Collection col = databaseConnection.getCollection(collectionName);
 
-        String query = 
+        String query = "update insert" + 
             "<cd id='" + autoincrement + "'>" + 
                 "<titol>" + titol + "</titol>" +
                 "<artista>" + artistName + "</artista>" +
                 "<pais>" + countryName + "</pais>" +
                 "<preu>" + price + "</price>" +
                 "<any>" + year + "</any>" +
-            "</cd>";
+            "</cd>" +
+            "into doc('" + fileName + "')//cataleg";
 
         queryToCollectionFile(col, fileName, query);
     }
