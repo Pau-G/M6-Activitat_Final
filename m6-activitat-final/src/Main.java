@@ -113,7 +113,7 @@ public class Main {
         existHelper.insertElement(collectionName, fileName, cdTitle, artistName, countryName, price, year);
     }
 
-    public static void changeCDPrice() {
+    public static void changeCDPrice() throws XMLDBException {
         System.out.println("Indica el nom de la col·lecció");
         String collectionName = askName("Nom");
 

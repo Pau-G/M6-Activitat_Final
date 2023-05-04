@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileWriter;
-import java.io.FilenameFilter;
 
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamWriter;
@@ -105,8 +104,13 @@ public class ExistHelper {
         queryToCollectionFile(col, fileName, query);
     }
 
-    public void changeCDPrice(String collectionName, String fileName, String cdTitle, float price) {
+    public void changeCDPrice(String collectionName, String fileName, String cdTitle, float price) throws XMLDBException {
+        // Desem la coleció desitjada
+        org.xmldb.api.base.Collection col = databaseConnection.getCollection(collectionName);
 
+        String query = "update value //cd[titol = '" + cdTitle + "']/preu with '" + price + "'";
+
+        queryToCollectionFile(col, fileName, query);
     }
 
     public void countCDs(String collectionName, String fileName) {
