@@ -5,7 +5,8 @@ import org.xmldb.api.base.XMLDBException;
 public class Main {
 
     static Scanner sc = new Scanner(System.in);
-    static ExistHelper existHelper = new ExistHelper();
+
+    static ExistHelper existHelper;
 
     private static String askName(String x) {
         String name;
@@ -18,14 +19,14 @@ public class Main {
                 System.out.println("Format incorrecte");
             }
 
-            System.out.print("Indicar " + x);
+            System.out.print(x + ": ");
             name = sc.nextLine();
         } while (name.isEmpty() || name.matches(".*\\s.*") || !name.matches("[a-zA-Z0-9]+"));
 
         return name;
     }
 
-    private static Float askFloat(String x ) {
+    private static Float askFloat(String x) {
         float number;
         boolean isCorrect = false;
 
@@ -36,14 +37,14 @@ public class Main {
                 System.out.println("Format incorrecte");
             }
 
-            System.out.print("Indicar " + x);
+            System.out.print(x + ": ");
             number = sc.nextFloat();
         } while (number > 0);
 
         return number;
     }
 
-    private static int askInt(String x ) {
+    private static int askInt(String x) {
         int number;
         boolean isCorrect = false;
 
@@ -54,7 +55,7 @@ public class Main {
                 System.out.println("Format incorrecte");
             }
 
-            System.out.print("Indicar " + x);
+            System.out.print(x + ": ");
             number = sc.nextInt();
         } while (number > 0);
 
@@ -68,151 +69,98 @@ public class Main {
     }
 
     public static void crearXML() {
-        String fileName = askName("nom");
-        String mainNode = askName("node");
+        System.out.println("Indica el nom de l'arxiu");
+        String fileName = askName("Nom");
+
+        System.out.println("Indica el nom del node inicial");
+        String mainNode = askName("Node");
 
         existHelper.createFile(fileName, mainNode);
     }
 
-    public static void pujarXML() {
+    public static void pujarXML() throws XMLDBException {
         System.out.println("Indica el nom de la col·lecció a la que vols pujar el fitxer:");
-        String collectionName;
-        while ((collectionName = sc.nextLine()).isBlank() || !collectionName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String collectionName = askName("Nom");
 
         System.out.println("Indica el nom del fitxer que vols pujar:");
-        String fileName;
-        while ((fileName = sc.nextLine()).isBlank() || !fileName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String fileName = askName("Nom");
 
         existHelper.uploadXML(collectionName, fileName);
     }
 
-    public static void inserirElement() {
+    public static void inserirElement() throws XMLDBException {
         System.out.println("Indica el nom de la col·lecció");
-        String collectionName;
-        while ((collectionName = sc.nextLine()).isBlank() || !collectionName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String collectionName = askName("Nom");
 
         System.out.println("Indica el nom del fitxer on vols inserir l'element:");
-        String fileName;
-        while ((fileName = sc.nextLine()).isBlank() || !fileName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String fileName = askName("Nom");
 
         System.out.println("Indica el títol del cd:");
-        String cdTitle;
-        while ((cdTitle = sc.nextLine()).isBlank() || !cdTitle.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String cdTitle = askName("Títol");
 
         System.out.println("Indica el nom de l'artista:");
-        String artistName;
-        while ((artistName = sc.nextLine()).isBlank() || !artistName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String artistName = askName("Nom");
 
         System.out.println("Indica el nom del pais d'origen:");
-        String countryName;
-        while ((countryName = sc.nextLine()).isBlank() || !countryName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String countryName = askName("Nom");
 
         System.out.println("Indica el preu del cd:");
-        float price;
-        while ((price = sc.nextFloat()) > 0) {
-            System.out.println("Format del preu incorrecte");
-        }
+        float price = askFloat("Preu");
 
         System.out.println("Indica l'any del CD:");
-        int year;
-        while ((year = sc.nextInt()) > 0) {
-            System.out.println("Format del preu incorrecte");
-        }
+        int year = askInt("Any");
 
         existHelper.insertElement(collectionName, fileName, cdTitle, artistName, countryName, price, year);
     }
 
     public static void changeCDPrice() {
         System.out.println("Indica el nom de la col·lecció");
-        String collectionName;
-        while ((collectionName = sc.nextLine()).isBlank() || !collectionName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String collectionName = askName("Nom");
 
         System.out.println("Indica el nom del fitxer que conté el CD:");
-        String fileName;
-        while ((fileName = sc.nextLine()).isBlank() || !fileName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String fileName = askName("Nom");
 
         System.out.println("Indica el títol del cd:");
-        String cdTitle;
-        while ((cdTitle = sc.nextLine()).isBlank() || !cdTitle.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String cdTitle = askName("Títol");
 
         System.out.println("Indica el nou preu del CD:");
-        float price;
-        while ((price = sc.nextFloat()) > 0) {
-            System.out.println("Format del preu incorrecte");
-        }
+        float price = askFloat("Preu");
 
         existHelper.changeCDPrice(collectionName, fileName, cdTitle, price);
     }
 
     public static void countCDsInFile() {
         System.out.println("Indica el nom de la col·lecció");
-        String collectionName;
-        while ((collectionName = sc.nextLine()).isBlank() || !collectionName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String collectionName = askName("Nom");
 
         System.out.println("Indica el nom del fitxer:");
-        String fileName;
-        while ((fileName = sc.nextLine()).isBlank() || !fileName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String fileName = askName("Nom");
 
         existHelper.countCDs(collectionName, fileName);
     }
 
     public static void deleteCD() {
         System.out.println("Indica el nom de la col·lecció");
-        String collectionName;
-        while ((collectionName = sc.nextLine()).isBlank() || !collectionName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String collectionName = askName("Nom");
 
         System.out.println("Indica el nom del fitxer que conté el CD:");
-        String fileName;
-        while ((fileName = sc.nextLine()).isBlank() || !fileName.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String fileName = askName("Nom");
 
         System.out.println("Indica el títol del cd:");
-        String cdTitle;
-        while ((cdTitle = sc.nextLine()).isBlank() || !cdTitle.matches("^[a-zA-Z0-9]")) {
-            System.out.println("Format del nom incorrecte");
-        }
+        String cdTitle = askName("Títol");
 
         existHelper.deleteCD(collectionName, fileName, cdTitle);
     }
 
     public static void getPreviousCDs() {
         System.out.println("Indica l'any límit (veuras els CDs anteriors a aquest any):");
-        int year;
-        while ((year = sc.nextInt()) > 0) {
-            System.out.println("Format del preu incorrecte");
-        }
+        int year = askInt("Any");
 
         existHelper.getPreviousCDs(year);
     }
 
     public static void main(String[] args) throws XMLDBException {
+        existHelper = new ExistHelper();
         
         // Instancia de la classe que es connecta a la base de dades
         IDatabaseConnection connection = DatabaseConnection.getInstance();
