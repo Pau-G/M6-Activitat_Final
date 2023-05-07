@@ -108,12 +108,20 @@ public class ExistHelper {
         queryToCollectionFile(col, fileName, query);
     }
 
-    public void countCDs(String collectionName, String fileName) {
+    public void countCDs(String collectionName, String fileName) throws XMLDBException {
+        org.xmldb.api.base.Collection col = databaseConnection.getCollection(collectionName);
 
+        String query = "<NumTotalCDs>{count(/cataleg/cd)}</NumTotalCDs>";
+        
+        queryToCollectionFile(col, fileName, query);
     }
 
-    public void deleteCD(String collectionName, String fileName, String cdTitle) {
+    public void deleteCD(String collectionName, String fileName, String cdTitle) throws XMLDBException {
+        org.xmldb.api.base.Collection col = databaseConnection.getCollection(collectionName);
 
+        String query = "/cataleg/cd[titol=" + cdTitle + "]";
+        
+        queryToCollectionFile(col, fileName, query);
     }
 
     public void getPreviousCDs(int year) {
