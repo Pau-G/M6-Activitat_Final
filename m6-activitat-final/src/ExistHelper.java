@@ -73,7 +73,7 @@ public class ExistHelper {
     public void uploadXML(String collectionName, String fileName) throws XMLDBException {
         org.xmldb.api.base.Collection col = databaseConnection.getCollection(collectionName);
 
-        File arxiu = new File(fileName);
+        File arxiu = new File("src/files/" + fileName + ".xml");
         if (!arxiu.canRead()) {
             System.out.println("ERROR AL LLEIGIR ARXIU");
         } else {
@@ -114,6 +114,7 @@ public class ExistHelper {
     public void countCDs(String collectionName, String fileName) throws XMLDBException {
         org.xmldb.api.base.Collection col = databaseConnection.getCollection(collectionName);
 
+        System.out.println("Contant numero de fitxers...");
         String query = "<NumTotalCDs>{count(/cataleg/cd)}</NumTotalCDs>";
 
         queryToCollectionFile(col, fileName, query);

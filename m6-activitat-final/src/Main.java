@@ -177,6 +177,7 @@ public class Main {
         connection.connect();
 
         while(true) {
+            System.out.println("");
             // Menu amb les diferents opocions possibles
             System.out.println("------MENU------");
             System.out.println("1. Crear Col·lecció");
