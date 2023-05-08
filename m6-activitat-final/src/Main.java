@@ -133,7 +133,7 @@ public class Main {
         existHelper.changeCDPrice(collectionName, fileName, cdTitle, price);
     }
 
-    public static void countCDsInFile() {
+    public static void countCDsInFile() throws XMLDBException {
         System.out.println("Indica el nom de la col·lecció");
         String collectionName = askName("Nom");
 
@@ -143,7 +143,7 @@ public class Main {
         existHelper.countCDs(collectionName, fileName);
     }
 
-    public static void deleteCD() {
+    public static void deleteCD() throws XMLDBException {
         System.out.println("Indica el nom de la col·lecció");
         String collectionName = askName("Nom");
 
@@ -156,11 +156,17 @@ public class Main {
         existHelper.deleteCD(collectionName, fileName, cdTitle);
     }
 
-    public static void getPreviousCDs() {
+    public static void getPreviousCDs() throws XMLDBException {
+        System.out.println("Indica el nom de la col·lecció");
+        String collectionName = askName("Nom");
+
+        System.out.println("Indica el nom del fitxer que conté el CD");
+        String fileName = askName("Nom");
+
         System.out.println("Indica l'any límit (veuras els CDs anteriors a aquest any)");
         int year = askInt("Any");
 
-        existHelper.getPreviousCDs(year);
+        existHelper.getPreviousCDs(collectionName, fileName, year);
     }
 
     public static void main(String[] args) throws XMLDBException {
