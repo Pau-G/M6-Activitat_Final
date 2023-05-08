@@ -40,11 +40,7 @@ public class Main {
             System.out.print(x + ": ");
             number = Float.parseFloat(sc.nextLine());
 
-<<<<<<< HEAD
-        } while (number < 0f);
-=======
         } while (number <= 0f);
->>>>>>> eec4bd2c50adf0e9c83c0662aae030bb451df790
 
         return number;
     }
@@ -62,12 +58,7 @@ public class Main {
 
             System.out.print(x + ": ");
             number = Integer.parseInt(sc.nextLine());
-<<<<<<< HEAD
-        } while (number < 0);
-=======
         } while (number <= 0);
->>>>>>> eec4bd2c50adf0e9c83c0662aae030bb451df790
-
         return number;
     }
 
