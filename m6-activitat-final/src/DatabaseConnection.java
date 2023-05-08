@@ -9,7 +9,7 @@ public class DatabaseConnection implements IDatabaseConnection {
     String driver = "org.exist.xmldb.DatabaseImpl"; // Driver para eXist
     String URI = "xmldb:exist://localhost:8080/exist/xmlrpc/db/"; // URI colecci�n
     String usu = "admin"; // Usuario
-    String usuPwd = "admin"; // Clave
+    String usuPwd = "2003"; // Clave
 
     private DatabaseConnection() {
     }
