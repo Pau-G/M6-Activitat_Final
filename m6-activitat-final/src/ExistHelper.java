@@ -96,7 +96,7 @@ public class ExistHelper {
                 "<preu>" + price + "</preu>" +
                 "<any>" + year + "</any>" +
                 "</cd>" +
-                "into doc('" + fileName + "')//cataleg";
+                " into doc('" + fileName + ".xml')//cataleg";
 
         queryToCollectionFile(col, fileName, query);
     }
