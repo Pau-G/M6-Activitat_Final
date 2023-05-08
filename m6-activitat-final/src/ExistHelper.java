@@ -93,7 +93,7 @@ public class ExistHelper {
                 "<titol>" + titol + "</titol>" +
                 "<artista>" + artistName + "</artista>" +
                 "<pais>" + countryName + "</pais>" +
-                "<preu>" + price + "</price>" +
+                "<preu>" + price + "</preu>" +
                 "<any>" + year + "</any>" +
                 "</cd>" +
                 "into doc('" + fileName + "')//cataleg";
