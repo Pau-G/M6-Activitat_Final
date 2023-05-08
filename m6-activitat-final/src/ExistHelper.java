@@ -86,17 +86,18 @@ public class ExistHelper {
         // Desem la coleció desitjada
         org.xmldb.api.base.Collection col = databaseConnection.getCollection(collectionName);
 
-        String query = "update insert" + 
+        String query = "update insert " + 
             "<cd id='" + autoincrement + "'>" + 
                 "<titol>" + titol + "</titol>" +
                 "<artista>" + artistName + "</artista>" +
                 "<pais>" + countryName + "</pais>" +
-                "<preu>" + price + "</price>" +
+                "<preu>" + price + "</preu>" +
                 "<any>" + year + "</any>" +
             "</cd>" +
-            "into doc('" + fileName + "')//cataleg";
+            "into doc('" + fileName + ".xml')//cataleg";
 
         queryToCollectionFile(col, fileName, query);
+        autoincrement++;
     }
 
     public void changeCDPrice(String collectionName, String fileName, String cdTitle, float price) throws XMLDBException {

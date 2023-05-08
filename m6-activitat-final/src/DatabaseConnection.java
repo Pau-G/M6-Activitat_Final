@@ -40,8 +40,6 @@ public class DatabaseConnection implements IDatabaseConnection {
             CollectionManagementService service = (CollectionManagementService) collection.getService("CollectionManagementService", "1.0");
             service.createCollection(collectionName);
 
-            collection.close();
-
             return true;
         } catch (XMLDBException e) {
             return false;
@@ -49,6 +47,11 @@ public class DatabaseConnection implements IDatabaseConnection {
     }
 
     public org.xmldb.api.base.Collection getCollection(String collectionName) throws XMLDBException {
-        return DatabaseManager.getCollection(URI + collectionName, usu, usuPwd); // Connexió amb la nostra col·lecció
+        Collection col = DatabaseManager.getCollection(URI + collectionName, usu, usuPwd); // Connexió amb la nostra col·lecció
+
+        if (col == null)
+            System.out.println("La col·lecció no existeix");
+
+        return col;
     }
 }
