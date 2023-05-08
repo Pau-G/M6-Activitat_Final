@@ -88,7 +88,7 @@ public class ExistHelper {
         // Desem la coleció desitjada
         org.xmldb.api.base.Collection col = databaseConnection.getCollection(collectionName);
 
-        String query = "update insert" +
+        String query = "update insert " +
                 "<cd id='" + autoincrement + "'>" +
                 "<titol>" + titol + "</titol>" +
                 "<artista>" + artistName + "</artista>" +
